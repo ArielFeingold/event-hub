@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  description: MyText
+  date: 2018-05-03
+  time: 2018-05-03 09:22:06
+  artist_id: 1
+  venue_id: 1
+
+two:
+  title: MyString
+  description: MyText
+  date: 2018-05-03
+  time: 2018-05-03 09:22:06
+  artist_id: 1
+  venue_id: 1
