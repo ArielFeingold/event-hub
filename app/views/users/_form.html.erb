@@ -1,9 +1,9 @@
 <%= form_for @user do |f| %>
 
 <div class="form-group">
-  <%= f.label "Email" %>
-  <br>
-  <%= f.text_field :email, class: "form-control", value: nil, :placeholder => (@user.errors.full_messages_for(:email).first) %>
+<%= f.label "Email" %>
+<br>
+<%= f.email_field :email, class: "form-control", :placeholder => (@user.errors.full_messages_for(:email).first) %>
 </div>
 
 <div class="form-group">
