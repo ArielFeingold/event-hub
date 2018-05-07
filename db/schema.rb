@@ -10,6 +10,70 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 2018_05_03_150446) do
+
+  create_table "comments", force: :cascade do |t|
+    t.text "content"
+    t.integer "user_id"
+    t.integer "meetup_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "events", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.date "date"
+    t.time "time"
+    t.integer "artist_id"
+    t.integer "venue_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "events_users", force: :cascade do |t|
+    t.integer "event_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "meetups", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.string "location"
+    t.time "time"
+    t.integer "event_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "meetups_users", force: :cascade do |t|
+    t.integer "meetup_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.string "uid"
+    t.string "password_digest"
+    t.text "about"
+    t.string "image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "venues", force: :cascade do |t|
+    t.string "name"
+    t.string "address"
+    t.string "city"
+    t.string "state"
+    t.string "country"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
 end
