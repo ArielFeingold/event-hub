@@ -5,16 +5,43 @@ class SessionController < ApplicationController
  end
 
  def create
-   if @user = User.find_by(email: params[:user][:email])
-     session[:user_id] = @user.id
-     redirect_to user_path(@user)
+   if auth
+     sign_in_with_auth(auth)
    else
-     render 'new'
+     sign_in_with_password
    end
- end
+  end
+
 
  def destroy
    session.delete :user_id
    redirect_to root_path
  end
+
+private
+
+   def auth
+    request.env['omniauth.auth']
+  end
+
+  def sign_in_with_auth(auth)
+    @user = User.find_or_create_by(uid: auth['uid']) do |u|
+      u.name = auth['info']['name']
+      u.email = auth['info']['email']
+      u.image = auth['info']['image']
+      u.password = 'asdfgasgadfgsdfhscnbq345'
+    end
+    session[:user_id] = @user.id
+    redirect_to user_path(@user)
+  end
+
+  def sign_in_with_password
+    @user = User.find_by(email: params[:user][:email])
+    if @user
+      session[:user_id] = @user.id
+      redirect_to user_path(@user)
+    else
+      render 'new'
+    end
+  end
 end
