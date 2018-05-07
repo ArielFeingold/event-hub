@@ -13,8 +13,9 @@
  *= require_tree .
  *= require_self
  */
- @import "bootstrap-sprockets";
+@import "bootstrap-sprockets";
 @import "bootstrap";
+@import "bootstrap-social.less";
 
 body, html  {
   height: 100%;
