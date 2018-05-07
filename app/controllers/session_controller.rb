@@ -32,14 +32,14 @@ private
       u.password = 'asdfgasgadfgsdfhscnbq345'
     end
     session[:user_id] = @user.id
-    redirect_to user_path(@user)
+    redirect_to edit_user_path(@user)
   end
 
   def sign_in_with_password
     @user = User.find_by(email: params[:user][:email])
     if @user
       session[:user_id] = @user.id
-      redirect_to user_path(@user)
+      redirect_to edit_user_path(@user)
     else
       render 'new'
     end
